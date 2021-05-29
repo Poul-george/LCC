@@ -8,6 +8,11 @@ if (isset($_POST["answer_send"])) {
     header("Location: http://co-19-246.99sv-coco.com/lcc/service/frontend/frontend2.php");
     exit;
 }
+if ($_SESSION["computer"]  === null || $_SESSION["computer"]  === "") {
+  $_SESSION["URL"] = $_SERVER['REQUEST_URI'];
+  header("Location: http://co-19-246.99sv-coco.com/lcc/service/frontend/user_judge.php");
+  exit;
+}
 
 ?>
 
@@ -25,7 +30,7 @@ if (isset($_POST["answer_send"])) {
   <?php } ?>
 
 
-  <title>TEST</title>
+  <title>front-end</title>
 </head>
 <body>
 
