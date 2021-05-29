@@ -1,6 +1,11 @@
 <?php
 session_start();
 // var_dump($_SESSION["array"]);
+if ($_SESSION["computer"]  === null || $_SESSION["computer"]  === "") {
+  $_SESSION["URL"] = $_SERVER['REQUEST_URI'];
+  header("Location: http://co-19-246.99sv-coco.com/lcc/service/frontend/user_judge.php");
+  exit;
+}
 
 ?>
 
@@ -10,7 +15,7 @@ session_start();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>てずと</title>
+  <title>front-end</title>
   <link rel="stylesheet" href="frontend2_pc.css">
 </head>
 <body>
