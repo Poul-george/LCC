@@ -10,29 +10,34 @@ if (isset($_SERVER['HTTP_USER_AGENT'])) {
   $ua = "";
 }
 
-if ((strpos($ua, 'Android') !== false) && (strpos($ua, 'Mobile') !== false) || (strpos($ua, 'iPhone') !== false) || (strpos($ua, 'Windows Phone') !== false)) {
-    // スマートフォンからアクセスされた場合
-    header("Location: http://co-19-246.99sv-coco.com" + $_SESSION["URL"]);
-    $_SESSION["computer"] = "phone";
-    exit();
+if ($_SESSION["computer"]  === null || $_SESSION["computer"]  === "") {
+  if ((strpos($ua, 'Android') !== false) && (strpos($ua, 'Mobile') !== false) || (strpos($ua, 'iPhone') !== false) || (strpos($ua, 'Windows Phone') !== false)) {
+      // スマートフォンからアクセスされた場合
+      header("Location: http://co-19-246.99sv-coco.com" . $_SESSION["URL"]);
+      $_SESSION["computer"] = "phone";
+      exit;
 
-} elseif ((strpos($ua, 'Android') !== false) || (strpos($ua, 'iPad') !== false)) {
-    // タブレットからアクセスされた場合
-    header("Location: http://co-19-246.99sv-coco.com" + $_SESSION["URL"]);
-    $_SESSION["computer"] = "phone";
-    exit();
+  } elseif ((strpos($ua, 'Android') !== false) || (strpos($ua, 'iPad') !== false)) {
+      // タブレットからアクセスされた場合
+      header("Location: http://co-19-246.99sv-coco.com" . $_SESSION["URL"]);
+      $_SESSION["computer"] = "phone";
+      exit;
 
-} elseif ((strpos($ua, 'DoCoMo') !== false) || (strpos($ua, 'KDDI') !== false) || (strpos($ua, 'SoftBank') !== false) || (strpos($ua, 'Vodafone') !== false) || (strpos($ua, 'J-PHONE') !== false)) {
-    // 携帯からアクセスされた場合
-    header("Location: http://co-19-246.99sv-coco.com" + $_SESSION["URL"]);
-    $_SESSION["computer"] = "phone";
-    exit();
+  } elseif ((strpos($ua, 'DoCoMo') !== false) || (strpos($ua, 'KDDI') !== false) || (strpos($ua, 'SoftBank') !== false) || (strpos($ua, 'Vodafone') !== false) || (strpos($ua, 'J-PHONE') !== false)) {
+      // 携帯からアクセスされた場合
+      header("Location: http://co-19-246.99sv-coco.com" . $_SESSION["URL"]);
+      $_SESSION["computer"] = "phone";
+      exit;
 
+  } else {
+      // その他（PC）からアクセスされた場合
+      header("Location: http://co-19-246.99sv-coco.com" . $_SESSION["URL"]);
+      $_SESSION["computer"] = "pc";
+      exit;
+  }
 } else {
-    // その他（PC）からアクセスされた場合
-    header("Location: http://co-19-246.99sv-coco.com" + $_SESSION["URL"]);
-    $_SESSION["computer"] = "pc";
-    exit();
+  header("Location: http://co-19-246.99sv-coco.com" . $_SESSION["URL"]);
+  exit;
 }
 
 echo $_SESSION["computer"];
