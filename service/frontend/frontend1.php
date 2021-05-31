@@ -2,6 +2,7 @@
 //セッションで値をほじ/// 
 session_start();
 $_SESSION["array"] = "";
+$_SESSION["URL"] = $_SERVER['REQUEST_URI'];
 
 if (isset($_POST["answer_send"])) {
     $_SESSION["array"] = $_POST;
